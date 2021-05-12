@@ -44,32 +44,36 @@ export default function MovieList() {
     }
 
     //sortera i alfabetiskordning
-    function orderByAlpha() {
-        function compare(a, b) {
-            if (a.title.toUpperCase() < b.title.toUpperCase()) {
-                return -1;
-            }
-            if (a.title.toUpperCase() > b.title.toUpperCase()) {
-                return 1;
-            }
-            return 0;
+    function compareTitle(a, b) {
+        if (a.title.toUpperCase() < b.title.toUpperCase()) {
+            return -1;
         }
-        let n = movies.sort(compare);
+        if (a.title.toUpperCase() > b.title.toUpperCase()) {
+            return 1;
+        }
+        return 0;
+    }
+
+    //skriver ut den sorterade listan 
+    function orderByAlpha() {
+        let n = movies.sort(compareTitle);
         setMovie([...n]);
     }
 
     //sortera efter betyg 
-    function orderByGrade() {
-        function compare(a, b) {
-            if (a.grade > b.grade) {
-                return -1;
-            }
-            if (a.grade < b.grade) {
-                return 1;
-            }
-            return 0;
+    function compareGrade(a, b) {
+        if (a.grade > b.grade) {
+            return -1;
         }
-        let m = movies.sort(compare);
+        if (a.grade < b.grade) {
+            return 1;
+        }
+        return 0;
+    }
+
+    //skriver ut den sorterade listan
+    function orderByGrade() {
+        let m = movies.sort(compareGrade);
         setMovie([...m]);
     }
 
